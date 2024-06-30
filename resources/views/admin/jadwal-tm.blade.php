@@ -6,120 +6,111 @@
             <div class="col">
                 <div class="card" style="box-shadow: 5px 5px 10px rgba(135, 110, 210, 0.5);">
                     <div class="card-body">
-                        <h5 class="card-title fw-semibold text-uppercase mb-4">Daftar Jadwal Technical Meeting</h5>
-                        <table id="data_kolat" class="table table-striped display nowrap" style="width: 100%">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#modaltambah" class="btn btn-primary mt-2">Tambah <i class="ti ti-edit"></i></button>
-                                <div class="modal fade" id="modaltambah" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <form id="formModal" action="{{ route('a.tambah-jadwal-tm') }}" method="POST">
-                                            @csrf
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jadwal Pendaftaran</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tanggal</label>
-                                                    <input type="date"
-                                                        class="form-control @error('tanggal') is-invalid @enderror"
-                                                        name="tanggal" value="{{ old('tanggal') }}"
-                                                        id="tanggal" required>
-                                                    @error('tanggal')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Waktu</label>
-                                                    <input type="time"
-                                                        class="form-control @error('waktu') is-invalid @enderror" name="waktu"
-                                                        value="{{ old('waktu') }}" id="waktu" placeholder="Opsional">
-                                                    @error('waktu')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Narahubung 1</label>
-                                                    <input type="text"
-                                                        class="form-control @error('narahubung_1') is-invalid @enderror" name="narahubung_1"
-                                                        value="{{ old('narahubung_1') }}" id="narahubung_1" placeholder="Opsional">
-                                                    @error('narahubung_1')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">NO.HP Narahubung 1</label>
-                                                    <input type="number"
-                                                        class="form-control @error('nohp_narhub_1') is-invalid @enderror" name="nohp_narhub_1"
-                                                        value="{{ old('nohp_narhub_1') }}" id="nohp_narhub_1" placeholder="Opsional">
-                                                    @error('nohp_narhub_1')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Narahubung 2</label>
-                                                    <input type="text"
-                                                        class="form-control @error('narahubung_2') is-invalid @enderror" name="narahubung_2"
-                                                        value="{{ old('narahubung_2') }}" id="narahubung_2" placeholder="Opsional">
-                                                    @error('narahubung_2')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">NO.HP Narahubung 2</label>
-                                                    <input type="number"
-                                                        class="form-control @error('nohp_narhub_2') is-invalid @enderror" name="nohp_narhub_2"
-                                                        value="{{ old('nohp_narhub_2') }}" id="nohp_narhub_2" placeholder="Opsional">
-                                                    @error('nohp_narhub_2')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Narahubung 3</label>
-                                                    <input type="text"
-                                                        class="form-control @error('narahubung_3') is-invalid @enderror" name="narahubung_3"
-                                                        value="{{ old('narahubung_3') }}" id="narahubung_3" placeholder="Opsional">
-                                                    @error('narahubung_3')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">NO.HP Narahubung 3</label>
-                                                    <input type="number"
-                                                        class="form-control @error('nohp_narhub_3') is-invalid @enderror" name="nohp_narhub_3"
-                                                        value="{{ old('nohp_narhub_3') }}" id="nohp_narhub_3" placeholder="Opsional">
-                                                    @error('nohp_narhub_3')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <h5 class="card-title fw-semibold text-uppercase mb-4">Jadwal Technical Meeting</h5>
+                        <form id="formModal" action="{{ route('a.tambah-jadwal-tm') }}" method="POST">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Tanggal</label>
+                                    <input type="date"
+                                        class="form-control @error('tanggal') is-invalid @enderror"
+                                        name="tanggal" value="{{ old('tanggal') }}"
+                                        id="tanggal" required>
+                                    @error('tanggal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Waktu</label>
+                                    <input type="time"
+                                        class="form-control @error('waktu') is-invalid @enderror" name="waktu"
+                                        value="{{ old('waktu') }}" id="waktu" placeholder="Opsional">
+                                    @error('waktu')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Narahubung 1</label>
+                                    <input type="text"
+                                        class="form-control @error('narahubung_1') is-invalid @enderror" name="narahubung_1"
+                                        value="{{ old('narahubung_1') }}" id="narahubung_1" placeholder="Opsional">
+                                    @error('narahubung_1')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">NO.HP Narahubung 1</label>
+                                    <input type="number"
+                                        class="form-control @error('nohp_narhub_1') is-invalid @enderror" name="nohp_narhub_1"
+                                        value="{{ old('nohp_narhub_1') }}" id="nohp_narhub_1" placeholder="Opsional">
+                                    @error('nohp_narhub_1')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Narahubung 2</label>
+                                    <input type="text"
+                                        class="form-control @error('narahubung_2') is-invalid @enderror" name="narahubung_2"
+                                        value="{{ old('narahubung_2') }}" id="narahubung_2" placeholder="Opsional">
+                                    @error('narahubung_2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">NO.HP Narahubung 2</label>
+                                    <input type="number"
+                                        class="form-control @error('nohp_narhub_2') is-invalid @enderror" name="nohp_narhub_2"
+                                        value="{{ old('nohp_narhub_2') }}" id="nohp_narhub_2" placeholder="Opsional">
+                                    @error('nohp_narhub_2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Narahubung 3</label>
+                                    <input type="text"
+                                        class="form-control @error('narahubung_3') is-invalid @enderror" name="narahubung_3"
+                                        value="{{ old('narahubung_3') }}" id="narahubung_3" placeholder="Opsional">
+                                    @error('narahubung_3')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">NO.HP Narahubung 3</label>
+                                    <input type="number"
+                                        class="form-control @error('nohp_narhub_3') is-invalid @enderror" name="nohp_narhub_3"
+                                        value="{{ old('nohp_narhub_3') }}" id="nohp_narhub_3" placeholder="Opsional">
+                                    @error('nohp_narhub_3')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="box-shadow: 5px 5px 10px rgba(135, 110, 210, 0.5);">
+                    <div class="card-body">
+                        <table id="data_kolat" class="table table-striped display nowrap" style="width: 100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">Tanggal</th>
