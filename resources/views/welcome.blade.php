@@ -73,7 +73,7 @@
                                 {{-- <div class="typed-text">Web Designer, Web Developer, Front End Developer, Apps Designer, Apps Developer</div> --}}
                             </div>
                             <div class="hero-btn">
-                                <a class="btn" href="https://drive.google.com/file/d/1zqKGSBkhc0_vZ7Cw_KAavZZmTMdolXoZ/view?usp=sharing">Unduh Proposal</a>
+                                <a class="btn" target="_blank" href="https://drive.google.com/file/d/1zqKGSBkhc0_vZ7Cw_KAavZZmTMdolXoZ/view?usp=sharing">Unduh Proposal</a>
                                 {{-- <a class="btn" href="">Contact Me</a> --}}
                             </div>
                         </div>

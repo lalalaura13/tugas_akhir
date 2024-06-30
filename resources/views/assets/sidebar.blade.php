@@ -48,14 +48,30 @@
         </li>
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">JADWAL</span>
+          <span class="hide-menu">JADWAL KEJUARAAN</span>
         </li> 
         <li class="sidebar-item">
-          <a class="sidebar-link" href="{{ route('a.jadwal') }}" aria-expanded="false">
+          <a class="sidebar-link" href="{{ route('a.jadwal-pendaftaran') }}" aria-expanded="false">
             <span>
               <i class="ti ti-article"></i>
             </span>
-            <span class="hide-menu">Jadwal Kejuaraan</span>
+            <span class="hide-menu">Pendaftaran</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ route('a.jadwal-tm') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-article"></i>
+            </span>
+            <span class="hide-menu">Technical Meeting</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ route('a.jadwal-pelaksanaan') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-article"></i>
+            </span>
+            <span class="hide-menu">Pelaksanaan</span>
           </a>
         </li>
         <li class="nav-small-cap">

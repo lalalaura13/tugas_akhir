@@ -66,9 +66,15 @@ Route::prefix('admin')->middleware('isAdmin')->group(function() {
     Route::get('/data-atlet', [PesertaController::class, 'table_atlet'])->name('a.data-atlet');
     Route::put('/verified-atlet{id}', [PesertaController::class, 'verified_atlet'])->name('a.verified-atlet');
     // ======================================== JADWAL =============================================================
-    Route::get('/jadwal', [JadwalController::class, 'index'])->name('a.jadwal');
-    Route::post('/tambah-jadwal', [JadwalController::class, 'tambah_jadwal'])->name('a.tambah-jadwal');
-    Route::put('/update-jadwal/{id}', [JadwalController::class, 'update_jadwal'])->name('a.update-jadwal');
+    Route::get('/jadwal-pendaftaran', [JadwalController::class, 'pendaftaran'])->name('a.jadwal-pendaftaran');
+    Route::post('/tambah-jadwal-pendaftaran', [JadwalController::class, 'tambah_jadwal_pendaftaran'])->name('a.tambah-jadwal-pendaftaran');
+    Route::put('/update-jadwal-pendaftaran/{id}', [JadwalController::class, 'update_jadwal_pendaftaran'])->name('a.update-jadwal-pendaftaran');
+    Route::get('/jadwal-tm', [JadwalController::class, 'tm'])->name('a.jadwal-tm');
+    Route::post('/tambah-jadwal-tm', [JadwalController::class, 'tambah_jadwal_tm'])->name('a.tambah-jadwal-tm');
+    Route::put('/update-jadwal-tm/{id}', [JadwalController::class, 'update_jadwal_tm'])->name('a.update-jadwal-tm');
+    Route::get('/jadwal-pelaksanaan', [JadwalController::class, 'pelaksanaan'])->name('a.jadwal-pelaksanaan');
+    Route::post('/tambah-jadwal-pelaksanaan', [JadwalController::class, 'tambah_jadwal_pelaksanaan'])->name('a.tambah-jadwal-pelaksanaan');
+    Route::put('/update-jadwal-pelaksanaan/{id}', [JadwalController::class, 'update_jadwal_pelaksanaan'])->name('a.update-jadwal-pelaksanaan');
     Route::delete('/delete-jadwal/{id}', [JadwalController::class, 'delete_jadwal'])->name('a.delete-jadwal');
     // ======================================== BAGAN ===================================================================
     Route::get('/olah-bagan', [BaganController::class, 'form_bagan'])->name('a.olah-bagan');
