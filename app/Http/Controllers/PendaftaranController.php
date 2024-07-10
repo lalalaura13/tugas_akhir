@@ -62,12 +62,12 @@ class PendaftaranController extends Controller
         $tambah = new Peserta;
 
         //conversi dari kode JENIS KELAMIN menjadi "kategori" di table dropdown
-        $jk = DB::table('dropdown')
+        $jk = DB::table('kategori')
             ->select('kategori')
             ->where('kode', $request->jenis_kelamin)
             ->get();
         
-        $kategori_usia = DB::table('dropdown')
+        $kategori_usia = DB::table('kategori')
             ->select('kategori')
             ->where('kode', $request->kategori_usia)
             ->get();
@@ -75,7 +75,7 @@ class PendaftaranController extends Controller
         //conversi dari kode KELAS TANDING menjadi "kategori" di table dropdown
         if (!empty($request->kelas_tanding)) {
             
-            $kelas_tanding = DB::table('dropdown')
+            $kelas_tanding = DB::table('kategori')
                 ->select('kategori')
                 ->where('kode', $request->kelas_tanding)
                 ->get();
@@ -83,7 +83,7 @@ class PendaftaranController extends Controller
         }
 
         //conversi dari kode kelas tanding menjadi kategori di dropdown
-        $kategori_tanding = DB::table('dropdown')
+        $kategori_tanding = DB::table('kategori')
             ->select('kategori')
             ->where('kode', $request->kategori_tanding  )
             ->get();
@@ -123,12 +123,12 @@ class PendaftaranController extends Controller
         $peserta = Peserta::findOrFail($id);
 
         //conversi dari kode JENIS KELAMIN menjadi kategori di table dropdown
-        $jk = DB::table('dropdown')
+        $jk = DB::table('kategori')
             ->select('kategori')
             ->where('kode', $request->jenis_kelamin)
             ->get();
         
-        $kategori_usia = DB::table('dropdown')
+        $kategori_usia = DB::table('kategori')
             ->select('kategori')
             ->where('kode', $request->kategori_usia)
             ->get();
@@ -138,14 +138,14 @@ class PendaftaranController extends Controller
             $peserta->kelas_tanding = '-';
         }
         else if ($request->hasAny('kelas_tanding') || $request->kelas_tanding == !null) {
-            $kelas_tanding = DB::table('dropdown')
+            $kelas_tanding = DB::table('kategori')
                 ->select('kategori')
                 ->where('kode', $request->kelas_tanding)
                 ->get();
                 $peserta->kelas_tanding = $kelas_tanding[0]->kategori;
         }
 
-        $kategori_tanding = DB::table('dropdown')
+        $kategori_tanding = DB::table('kategori')
                 ->select('kategori')
                 ->where('kode', $request->kategori_tanding)
                 ->get();
