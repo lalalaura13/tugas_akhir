@@ -25,10 +25,14 @@ class User extends Authenticatable
     ];
 
     public static $rules = [
+        'email' => 'required|email|unique:users,email',
         'password' => 'min:6',
     ];
 
     public static $messages = [
+        'email.required' => 'Email wajib diisi!',
+        'email.email' => 'Format email tidak valid!',
+        'email.unique' => 'Email sudah digunakan!',
         'password.min' => 'Password minimal 6 Karakter!',
     ];
 

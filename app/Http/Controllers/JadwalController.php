@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class JadwalController extends Controller
@@ -15,6 +16,23 @@ class JadwalController extends Controller
 
     public function tambah_jadwal_pendaftaran(Request $request) {
 
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
+
+        // dd('ril');
         $jadwal = new Jadwal();
         $jadwal->judul = 'Pendaftaran Online';
         $jadwal->tanggal = $request->tanggal;
@@ -30,6 +48,22 @@ class JadwalController extends Controller
     }
 
     public function update_jadwal_pendaftaran(Request $request, $id) {
+
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
 
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->judul = 'Pendaftaran Online';
@@ -54,6 +88,22 @@ class JadwalController extends Controller
 
     public function tambah_jadwal_tm(Request $request) {
 
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
+
         $jadwal = new Jadwal();
         $jadwal->judul = 'Technical Meeting';
         $jadwal->tanggal = $request->tanggal;
@@ -69,6 +119,22 @@ class JadwalController extends Controller
     }
 
     public function update_jadwal_tm(Request $request, $id) {
+
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
 
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->judul = 'Technical Meeting';
@@ -93,6 +159,22 @@ class JadwalController extends Controller
 
     public function tambah_jadwal_pelaksanaan(Request $request) {
 
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
+
         $jadwal = new Jadwal();
         $jadwal->judul = 'Waktu Dan Tempat Pelaksanaan';
         $jadwal->tanggal = $request->tanggal;
@@ -108,6 +190,22 @@ class JadwalController extends Controller
     }
 
     public function update_jadwal_pelaksanaan(Request $request, $id) {
+
+        $yearNow = Carbon::now()->year;
+        $monthNow = Carbon::now()->month;
+        $year = Carbon::parse($request->tanggal)->year;
+        $month = Carbon::parse($request->tanggal)->month;
+        $time = Carbon::parse($request->waktu)->hour;
+
+        if ($year < $yearNow) {
+            return redirect()->back()->with('error', 'Tahun tidak valid ');
+        }
+        if ($monthNow > $month ) {
+            return redirect()->back()->with('error', 'Bulan tidak valid ');
+        }
+        if ($time < 8 || $time > 16) {
+            return redirect()->back()->with('error', 'Waktu tidak valid ');
+        }
 
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->judul = 'Waktu Dan Tempat Pelaksanaan';

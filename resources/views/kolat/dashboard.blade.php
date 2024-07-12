@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($medali as $item)
                     <tr>
-                        <td class="text-center">{{ $item->nama_kolat }}</td>
+                        <td class="text-center">{{ $item->kolat->nama_kontingen }}</td>
                         <td class="text-center">{{ $item->emas }}</td>
                         <td class="text-center">{{ $item->perak }}</td>
                         <td class="text-center">{{ $item->perunggu }}</td>

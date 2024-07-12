@@ -7,6 +7,30 @@
                 <h5 class="card-title fw-semibold text-uppercase mb-4 text-primary">Tambah Bagan</h5>
                 <form action="{{ route('a.tambah-bagan') }}" method="POST">
                     @csrf
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="mb-3">
+                                <label class="form-label">Team Kiri</label>
+                                <select class="form-select js-example-basic-multiple-limit team-kiri" placeholder="-- Pilih Team --" name="sudut_merah[]" multiple="multiple" aria-label="Default select example">
+                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="mb-3">
+                                <label class="form-label"></label>
+                                <h5 class="mt-3">vs</h5>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-3">
+                                <label class="form-label">Team Kanan</label>
+                                <select class="form-select js-example-basic-multiple-limit team-kanan" placeholder="-- Pilih Team --" name="sudut_biru[]" multiple="multiple" aria-label="Default select example">
+                                
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Kategori Usia</label>
                         <select name="kategori_usia" id="kategori_usia_bagan"
@@ -63,30 +87,7 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="mb-3">
-                                <label class="form-label">Team Kiri</label>
-                                <select class="form-select js-example-basic-multiple-limit team-kiri" placeholder="-- Pilih Team --" name="sudut_merah[]" multiple="multiple" aria-label="Default select example">
-                                
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="mb-3">
-                                <label class="form-label"></label>
-                                <h5 class="mt-3">vs</h5>
-                            </div>
-                        </div>
-                        <div class="col-5">
-                            <div class="mb-3">
-                                <label class="form-label">Team Kanan</label>
-                                <select class="form-select js-example-basic-multiple-limit team-kanan" placeholder="-- Pilih Team --" name="sudut_biru[]" multiple="multiple" aria-label="Default select example">
-                                
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

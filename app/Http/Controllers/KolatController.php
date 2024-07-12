@@ -6,6 +6,7 @@ use App\Models\Dropdown;
 use App\Models\KelompokLatihan;
 use App\Models\Peserta;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -30,8 +31,36 @@ class KolatController extends Controller
         return view('kolat.table-pendaftaran', compact('data', 'peserta', 'formB', 'alamatB'));
     }
 
-    public function tambah_peserta(Request $request) {
+    public function tambah_peserta(Request $request) 
+    {
         // dd($request);
+        $dewasa = DB::table('kategori')->where('kode', $request->kategori_usia)->select('kategori')->first();
+        
+        $year = Carbon::parse($request->tempat_tanggal_lahir)->year;
+        $yearNow = Carbon::now()->year;
+
+        // dd($year);
+        if ($dewasa->kategori == 'Dewasa (mahasiswa/Umum)') {
+            if ($year < 1989 || $year > 2007) {
+                return redirect()->back()->with('error', 'Maaf umur anda tidak masuk dalam kategori Dewasa');
+            }
+        }
+        elseif ($dewasa->kategori == 'Remaja (SMA)') {
+            if ($year < 2007 || $year > 2010) {
+                return redirect()->back()->with('error', 'Maaf umur anda tidak masuk dalam kategori Remaja');
+            }
+        }
+        elseif ($dewasa->kategori == 'Pra Remaja (SMP)') {
+            if ($year < 2010 || $year > 2012) {
+                return redirect()->back()->with('error', 'Maaf umur anda tidak masuk dalam kategori Pra Remaja');
+            }
+        }
+        elseif ($dewasa->kategori == 'Usia Dini (Kelas 3-6 SD)') {
+            if ($year < 2012 || $year > 2014) {
+                return redirect()->back()->with('error', 'Maaf umur anda tidak masuk dalam kategori Usia Dini');
+            }
+        }
+
         $validator = Validator::make($request->all(), Peserta::$rules, Peserta::$messages);
         if ($validator->fails()) {
             return redirect()->back()
