@@ -11,8 +11,11 @@ class Bagan extends Model
 
     protected $table = 'bagan';
     protected $fillable = [
-        'sudut_merah',
-        'sudut_biru',
         'kategori',
     ];
+
+    public function detailBagan()
+    {
+        return $this->hasMany(DetailBagan::class, 'bagan_id', 'id');
+    }
 }

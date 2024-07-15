@@ -81,6 +81,8 @@ Route::prefix('admin')->middleware('isAdmin')->group(function() {
     Route::post('/tambah-bagan', [BaganController::class, 'tambah_bagan'])->name('a.tambah-bagan');
     Route::delete('/delete-bagan/{id}', [BaganController::class, 'delete_bagan'])->name('a.delete-bagan');
     Route::post('/get-atlet', [BaganController::class, 'getatlet'])->name('a.get-atlet');
+    route::get('/detail/{id}', [BaganController::class,'detail'])->name('a.detail-bagan');
+    route::put('/update-bagan/{id}', [BaganController::class,'update_bagan'])->name('a.update-bagan');
     // ======================================== SERTIFIKAT ===============================================================
     Route::get('/olah-sertifikat', [SertifikatController::class, 'index'])->name('a.olah-sertifikat');
     Route::post('/generate-sertifikat', [SertifikatController::class, 'generate_sertifikat'])->name('a.generate-sertifikat');
@@ -119,6 +121,7 @@ Route::prefix('kolat')->middleware('isKolat')->group(function() {
     Route::delete('delete-formB', [KolatController::class, 'delete_formB'])->name('k.delete-formB');
     // ============================================== BAGAN ================================================
     Route::get('/daftar-bagan', [BaganController::class, 'daftar_bagan'])->name('k.daftar-bagan');
+    route::get('/detail/{id}', [BaganController::class,'detail'])->name('k.detail-bagan');
     // ======================================== SERTIFIKAT ===============================================================
     Route::get('/daftar-sertifikat', [SertifikatController::class, 'index_kolat'])->name('k.daftar-sertifikat');
     Route::get('/donwload-all-sertifikat', [SertifikatController::class, 'donwloadAll'])->name('k.download-all');

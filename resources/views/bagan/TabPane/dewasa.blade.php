@@ -17,13 +17,16 @@
             <div class="col-lg-6 d-flex align-items-stretch">
                 <div class="card w-100" style="box-shadow: 5px 5px 10px rgba(135, 110, 210, 0.5);">
                     <div class="card-body p-4">
-                        <div class="d-flex">
+                        <div class="d-flex justify-cotent-center align-items-center">
                             <h5 class="card-title fw-semibold text-uppercase mb-4">{{ $item->kategori }}</h5>
-                            @if (Auth()->user()->role_id == 1)
+                            @if (Auth()->user()->role_id == 2)
+                            <a href="{{ route('k.detail-bagan', ['id' => $item->id]) }}" class="btn btn-success ms-2 btn-sm me-2" >Detail</i></a>
+                            @elseif (Auth()->user()->role_id == 1)
+                            <a href="{{ route('a.detail-bagan', ['id' => $item->id]) }}" class="btn btn-success ms-2 btn-sm me-2" >Detail</a>
                                 <form id="deleteForm{{ $item->id }}" class="ms-auto" action="{{ route('a.delete-bagan', ['id' => $item->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-warning"><i class="ti ti-trash"></i></button>
+                                    <button type="submit" class="btn btn-warning btn-sm"><i class="ti ti-trash"></i></button>
                                 </form>
                             @endif
                         </div>
@@ -37,15 +40,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @php
+                                        {{-- @php
                                             $sudut_merah = json_decode($item->sudut_merah);
                                             $sudut_biru = json_decode($item->sudut_biru);
-                                        @endphp
-                                        @foreach ($sudut_merah as $key => $playerA)
+                                        @endphp --}}
+                                        @foreach ($item->detailBagan as $dt)
                                             <tr class="text-center">
-                                                <td>{{ $playerA }}</td>
+                                                <td>{{ $dt->sudut_merah }}</td>
                                                 <td>vs</td>
-                                                <td>{{ $sudut_biru[$key] }}</td>
+                                                <td>{{ $dt->sudut_biru }}</td>
                                             </tr>
                                         @endforeach
                                 </tbody>
@@ -65,13 +68,16 @@
             <div class="col-lg-6 d-flex align-items-stretch">
                 <div class="card w-100" style="box-shadow: 5px 5px 10px rgba(135, 110, 210, 0.5);">
                     <div class="card-body p-4">
-                        <div class="d-flex">
+                        <div class="d-flex justify-cotent-center align-items-center">
                             <h5 class="card-title fw-semibold text-uppercase mb-4">{{ $item->kategori }}</h5>
-                            @if (Auth()->user()->role_id == 1)
+                            @if (Auth()->user()->role_id == 2)
+                            <a href="{{ route('k.detail-bagan', ['id' => $item->id]) }}" class="btn btn-success ms-2 btn-sm me-2" >Detail</i></a>
+                            @elseif (Auth()->user()->role_id == 1)
+                            <a href="{{ route('a.detail-bagan', ['id' => $item->id]) }}" class="btn btn-success ms-2 btn-sm me-2" >Detail</a>
                                 <form id="deleteForm{{ $item->id }}" class="ms-auto" action="{{ route('a.delete-bagan', ['id' => $item->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-warning"><i class="ti ti-trash"></i></button>
+                                    <button type="submit" class="btn btn-warning btn-sm"><i class="ti ti-trash"></i></button>
                                 </form>
                             @endif
                         </div>
@@ -85,15 +91,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @php
+                                        {{-- @php
                                             $sudut_merah = json_decode($item->sudut_merah);
                                             $sudut_biru = json_decode($item->sudut_biru);
-                                        @endphp
-                                        @foreach ($sudut_merah as $key => $playerA)
+                                        @endphp --}}
+                                        @foreach ($item->detailBagan as $dt)
                                             <tr class="text-center">
-                                                <td>{{ $playerA }}</td>
+                                                <td>{{ $dt->sudut_merah }}</td>
                                                 <td>vs</td>
-                                                <td>{{ $sudut_biru[$key] }}</td>
+                                                <td>{{ $dt->sudut_biru }}</td>
                                             </tr>
                                         @endforeach
                                 </tbody>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bagan', function (Blueprint $table) {
             $table->id();
-            $table->json('sudut_merah');
-            $table->json('sudut_biru');
+            // $table->json('sudut_merah');
+            // $table->json('sudut_biru');
             $table->string('kategori');
             $table->timestamps();
         });
